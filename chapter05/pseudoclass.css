@@ -1,0 +1,97 @@
+/*자손 결합자*/
+.outer li{
+  color: olivedrab;
+}
+/*자식(1촌 자손) 결합자*/
+.outer > li{
+  color: dodgerblue;
+}
+/*자식의 자손을 선택하려면*/
+.outer > li li {
+  text-decoration: underline;
+}
+/*즉 > 과 공백을 이용하여 특정한 조건을 걸어서 CSS 를 적용 시킬 수 있음
+
+css 문서에서 .outer li. 부분 에서 color : olivedrab 을 주석처리시 .outer > li 에서
+지정한 dodgerblue 가 자식 뿐 아니라 손자까지 적용됨
+이는 서체 및 텍스트 관련 css 의 일부 속성들이 그 자식에게 까지 자동 상속 되기 때문
+
+즉 자식 결합자라도 적용한 속성이 상속되는 속성이라면 이를 덮어 쓰는 다른 선택자와 속성을
+지정하지 않는 한 그 아래의 자식들도 해당 속성을 상속 받음
+
+상속 관련은 추후 수업 예정
+*/
+/* 뒤따르는 모든 동생들 결합자 */
+.starter ~ li{
+  font-style: italic;
+}
+
+/*뒤 따르는 바로 다음 동생결합자 만 적용 시키기(+) 사용*/
+.starter + li {
+  font-weight: bold;
+}
+/*첫 번째 마지막 요소 가상 클래스*/
+ol li:first-child,
+ol li:last-child{
+  color: yellowgreen;
+}
+/*
+  ol 내의 li 태그의 첫번째 요소 와, li 태그의 마지막 요소 를 지정하여
+  특정 태그의 속성을 기입하지 않고도 css 적용 가능
+
+  아래는 응용
+*/
+/*~ 가 아닌 요소*/
+/* 1 */
+.outer > li:not(:last-child){
+  text-decoration: line-through;
+}
+/* 2 */
+ul:not(.outer) li{
+  font-weight: bold;
+}
+/*
+  1번 해석: outer 클래스의 직계 자식(>)인 li 태그 중에 마지막 요소(last-child) 가 아닌것을 골라
+  취소선 적용한다는 것 의미
+
+  2번 : ul 태그중 outer 클래스 아닌것을 골라 그안의 li 만 볼드체 적용한다는 의미
+     그 결과 과일 항목 아래에 있는 ul 태그는 outer 클래스가 아니기에 사과 포도 딸기 키위만 볼드체 적용
+*/
+/*~ 번째 요소 가상 클래스*/
+ol li:nth-child(3){
+  font-weight: bold;
+  color: deeppink;
+}
+ol li:nth-child(4n){/*4,8 에만 적용*/
+  font-weight: bold;
+  color: deepskyblue;
+}
+ol li:nth-child(2n+3){
+  font-weight: bold;
+  color: darkgreen;
+}ol li:nth-child(even){/*짝수 적용 / 홀수는 odd*/
+  font-weight: bold;
+  color: white;
+}
+/*
+  주의 사항 : nth-child() 의 소괄호 내에 들어 갈 수 있는 사례: 
+  1) # : 특정숫자
+  2) #n : n번째 마다
+  3) #n+@ : n 번째+@ 값 마다
+  4) odd : 홀수 번째
+  5) even : 짝수 번째
+  
+
+    자주 사용하는 것
+    마우스오버(:hover)
+*/
+/*마우스 오버 가상 클래스*/
+li:hover{
+  font-weight: bold;
+  color: blue;
+}
+/*
+  hover의 의미가 떠다니다 라는 뜻으로 마우스를 특정 요소 위에 올려뒀을 경우 적용
+  단 구체적으로 명시한 요소들의 우선순위가 높기에 적용이 안되는 경우가 있음
+  https://flukeout.github.io/ CSS 학습 사이트 현재 학습 수준으로 절반정도 가능?
+*/
