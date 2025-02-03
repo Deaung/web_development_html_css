@@ -1,0 +1,12 @@
+p{
+  text-decoration: blue
+  wavy overline 5px;
+
+  /* text-transform: capitalize; */
+  text-transform: uppercase;
+  /* text-transform: lowercase; */
+
+  /*
+    text decoration 의 다양한 속성값 넣으면서 확인
+  */
+}

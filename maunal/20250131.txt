@@ -144,3 +144,18 @@ CSS를 적용하는 3가지 방식
         <s> 태그에 해당하는 line-through
         윗줄 : overline
 
+      2) text-transform : 
+        영문 알파벳 대소문자 표시에 사용되는 속성
+        2)-1 none : 입력한 그대로 표시
+        2)-2 capitalize : 각 단어 첫 글자 대문자 표기
+        2)-3 uppercase : 전부 대문자 표기
+        2)-4 lowercase : 전부 소문자
+
+        * 처음부터 대소문자 구분하면 안되나??
+          개발 환경에서 웹 페이지가 나타내는 텍스트는HTML 문서에서 작성되기 보다 서버에서
+          들어오는 경우가 많음, 그 경우 어떤 텍스트 전달 받을 지 모르기에 사용
+          CSS 에서 설정 함
+
+          textdecoration.html
+          textdecoration.css
+

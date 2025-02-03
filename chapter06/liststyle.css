@@ -1,0 +1,27 @@
+ul{
+  list-style: circle;
+}
+/*
+  빈 원 : circle
+  차있는 원 : disc
+  차 있는 사각형 : square
+
+*/
+ol {
+  list-style: lower-alpha;
+}
+/*
+  1,2,3 : decimal -- 기본
+  abc: lower-alpha
+  ABC: upper-alpha
+  i ii iii : lower-roman
+  I II III : upper-roman
+*/
+ul > li:first-child{
+  list-style: "ㅁ";
+}
+/*
+  목록에서 특정한것만 지정하여 
+  list-style 을 편집하는것도 가능
+  지난 수업에서 들은 부모/형제/자식 관계에 대한내용 다시 상기
+*/

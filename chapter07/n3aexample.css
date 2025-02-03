@@ -1,0 +1,23 @@
+/* body{
+  /* background-color: gray; 
+}*/
+
+/*div{
+  /* background-color: purple;
+  width: 100%; 
+}*/
+/*p{
+  /* background-color: green;
+  width: 100%; 
+} */
+div{
+  /*마진 하나 지정사례*/
+  /* padding: 0px;
+  margin: 40px; */
+  /*마진 두개 지정 사례*/
+  /* margin: 10vh 2vw; 첫번째ㅔ 값 : 세로 두번째 값 : 가로 */
+  /* padding: 0; */
+  /* 마진값4개 지정 각 값은 위에서부터 시계방향 */
+  margin: 12px 24px 48px 96px;
+  padding: 0;
+}

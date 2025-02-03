@@ -13,5 +13,5 @@ p{
 span{
   /* text-decoration: wavy underline tomato;물결 선언 : wavy */
   /* text-decoration: dotted underline overline blue 4px; 점선선언 dotted 4px는 폰트크기가 아닌 데코레이션의 크기 */
-  text-decoration: dashed line-through deeppink 2px;
+  text-decoration: dashed line-through deeppink 2px; /*파선 선언 : dashed*/
 }
