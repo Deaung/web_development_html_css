@@ -1,0 +1,164 @@
+padding 속성 :  
+  컨텐츠의 안쪽 여백을 지정하는 방법 -> margin 과 동일
+
+    (1) padding 값을 하나로 지정하는 경우 / 상하좌우
+    (2) padding 값을 두개로 지정하는 경우 / 위아래//좌우
+    (3) padding 값을 네개로 지정하는 경우 /위쪽부터 시계방향
+    (4) padding 값을 세개로 지정하는 경우 위/좌우/아래
+
+    .div1/.div2 로 나누었을 때 확인 할 점
+    (1) class selector 클래스 선택자 사용
+    (2) div1 의 아래쪽 여백과 div2 위쪽 여백은 겹침
+      -> 블록 요소의 위 아래 마진은 전후 블록 요소의 것과
+      상쇄함
+      특정 요소가 더 긴 마진값을 지니고 있다면
+      더 긴 마진을 기준으로 생성
+
+      n4marginpadding
+      top, botttom, left, right관련 수업
+
+      auto 값: 너비가 지정된 블록 요소의 가로 방향에서 남은 건물
+
+
+      margin 0 auto; 적용시 auto 값을 가지고 중앙에 배치되는것 확인가능
+        ->div가 기본적으로 block 요소이기때문
+
+        -->display: inline-block 을 먹였을 경우
+         auto 는 적용되지 않음
+
+        ---> 그렇다면 display: inline-block 먹이고 나서 중앙에 위치시키고 싶다면
+          div 태그의 부모 요소인 body 태그에 text-align 속성 center 로 하면 됨
+
+          이상의 결과에서 알 수 있는 점은 inline block 요소는 박스 형태를 
+          유지하지만  inline 요소처럼 text 흐름을 따르기에 
+          text-align 을 통한 배치가 가능함
+
+  3. 테두리 속성  : 여지껏 안다뤘던 부분 해당 요소 강조시 사용
+
+    border 속성 :
+      border 는 테두리, 어떤 요소의 테두리 모양 설정하는 class
+      형식 : 
+        border: 2px solid black; 
+        border: 0.5em dashed black; 
+        border: 1.5vmin dotted black; 
+
+    box-sizing 속성
+      box-sizing: content-box;
+      width: 440px;
+
+      으로 작성시 박스에서의 컨텐츠 영역만 440px 에 해당함(마진, 패딩 제외)
+
+      box-sizing: border-box;
+      width: 440px
+      으로 작성한다고 가정시 박스에서의 영역은 padding 과 border를 포함하여 440px임을 의미
+
+    border-radius 속성:
+      박스 모델의 모서리를 둥글게 지정시 사용
+        (1) 값 하나만 지정 : 상하좌우 모두 적용
+        (2) 값 두개만 지정 : 첫번째 - 상단 왼쪽, 하단 오른쪽/ 두번째 - 상단 오른쪽, 하단 왼쪽
+        (3) 값 네개로 지정 : 상단 왼쪽 모서리 부터 시계방향 
+
+    overflow 속성
+      부모 요소보다 height / width 가 큰 자식요소를 나타내는 방법 지정
+        기본적으로 overflow는 auto 설정되어있음 -> 자식요소가 부모요소보다 큰 경우
+        스크롤 바를 자동으로 생성
+
+        overflow: auto; -> 필요없음
+        overflow: visible; -> 부모 영역을 벗어난 자식요소를 그대로 보여줌
+        overflow: hidden; -> 부모영역을 벗어난 자식요소를 보여주지 않음
+        overflow: scroll; -> auto와 비슷하게 부모영역 벗어나면 스크롤바 생성
+          차이점으로는 자식요소가 부모요소 넘어가지 않더라도 스크롤 바를 생성함
+
+          굳이 scroll 지정할 필요
+            자식 요소의 크기에 따라 스크롤 바가 나타나기도/ 안나타나기도 하기에 
+            페이지의 가로 너비가 유동적으로 보이게 됨
+            어떤 요소를 크기에 관계없이 한 곳에 고정시켜 일관적으로 보여주고자 한다면
+            scroll 속성을 지정, 무조건 나타나도록 하는 편이 나을 수 있다.
+
+        overflow-x / overflow-y : 가로와 세로 따로 지정하는것도 가능
+
+  박스 그림자 속성 :  
+    box-shadow: (inset 여부) offset-x offset-y (blur-radius) (spread-radius) color
+                            x축두께   y축두께    퍼짐효과 크기   그림자 크기
+
+      spread-radius 의 경우 음수값 지정 가능, 그 경우 그림자 크기가 상자보다 적어짐
+
+      inset : 박스 안쪽에 그림자 만드는 효과
+
+      blur-radius : 박스 사이즈를 침범하여 그림자 만드는 효과 
+
+      그림자 효과 설정하는 사이트 사례
+      https://shadow.brumm.af/
+      그림자 여러모양으로 조절 할 수있는 도구 보여줌
+      마우스로 박스 영역의 그림자 조절하는 수치에 따라 
+      그에 맞는 css 코드 보여줌 \
+
+  색 표현하기 
+    CSS 는 색 표현하는 다양한 방식을 제공하기 때문에 상황에 맞춰 선택 할 수 있어야 함
+
+    색 표현하는 방법
+      1) keyword: 색상 이름 그대로 명시하는 방법
+        키워드는 구글에서 css color mdn 검색시 나옴
+      
+      2)RGB / RGB(A) : 빛의 3원색을 조합해 색을 나타내는 방식
+        수치 / 퍼센트를 사용해 표기 
+        수치 : 0~255
+        퍼센트 : 수치 255 == 100% 
+
+        RGB(A) 의 A 는 알파 값-> 불투명도 의미
+        ex) rgba(0, 0, 0, 25) : 검은색 나오는데 , 25 퍼센트의 불투명도를 지니기에
+        회색처럼 보임, 알파값 높을 수록 불투명도 높아짐
+
+        HEX : 16진수로 표현한 RGB 값
+rgb(255, 255, 255) : 가장 높은 값 rgb(255, 255, 255)를 의미
+        HSL(A) : 색상,채도,명도,알파값을 순서대로 나타냄 
+          채도 :  색이 얼마나 분명하게 나타나는지 
+          명도 :  색의 밝은 정도를 나타냄 
+
+          n10csscolor
+
+배경 꾸미기
+  : 원하는 색을 지정 / 이미지를 원하는 방법대로 배치하는 등의 역할.
+  배경관련 속성 팁
+  "background-" 에 해당하는 속성명을 지님
+
+  1. 이미지를 배경에 사용하기
+    1) background-image 속성
+      배경에 색상 지정하는 대신 이미지 파일을 넣고 싶을 때
+      background-image 속성에 해당 이미지 있는 절대경로/ 상대경로 를 url 값으로 지정가능
+
+    2) background-repeat 속성:
+      배경 크기가 삽입한 이미지보다 큰 경우 
+      삽입한 이미지를 가로세로로 반복해서 나타냄
+      background-repeat: repeat; -- 기본값
+      background-repeat: no-repeat; 한번만 나타냄  
+      background-repeat: repeat-x; 가로만 채움
+      background-repeat: repeat-y; 세로만 채움
+      background-repeat: space; 배경의 모서리를 먼저 채우고, 남는 부분을 비율에 맞춰 넣음 //잘 안씀
+      background-repeat: round; 이미지를 잘리지 않게 채워넣음
+      background-repeat: repeat-space; 첫번째 값 가로/ 두번째 값 세로 
+
+    3) background-position 속성 : no-repeat 기준
+      background-position: top / bottom / left / right는 기본
+      background-position: center; 
+      background-position: 50% 50%; -> x축 y축 각각 50% 라서 center와 같음
+
+    4) background-size 속성 :
+      배경이미지 크기를 지정
+
+        background-size: auto; -> 이미지의 원래 크기대로 표현
+          사이트 사례의 경우 이미지가 div 영역보다 크기에 잘려서 표현됨
+
+        background-size: 10%; -> 상대값 표기 가능// 이미지 기준 퍼센트
+        background-size: 100px 150px ; -> 절대 값 표기 가능
+        background-size: contain; -> 전체 div 영역에서 긴 부분 영역을 
+        자동으로 맞춰줌. background-position: center; 와 같이 사용시
+        가운데에 하나의 이미지 고정된 형태가 됨, 여러 사이트에서 사용함
+        background-size: cover; 의 경우 div 사이즈 만큼 여백을 남기지 않고 
+        해당이미지로 전부 채울 경우 사용(가로 및 세로 잘리는 경우도 있음)
+
+        Chapter08 생성
+
+  배경에 그라데이션 넣기  :
+    두 가지 이상의 색을 사용하여 두 색을 점점 변화시켜 가며 채색
+    n02gradient

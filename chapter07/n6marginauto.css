@@ -1,0 +1,8 @@
+div {
+  text-align: center;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background-color: orangered;
+  margin: 0 auto;
+}

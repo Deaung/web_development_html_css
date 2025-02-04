@@ -1,0 +1,11 @@
+p {
+  background-color: lightblue;
+  margin: 24px;
+  padding: 24PX;
+}
+/*태그 클래스 */
+p.special{
+  margin-left: 100px;
+  margin-right: ;
+  padding-top: 40ss;
+}
