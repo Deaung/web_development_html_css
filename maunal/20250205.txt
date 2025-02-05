@@ -1,0 +1,169 @@
+포지셔닝 :  
+    HTML로 만든 웹 페이지는 하나의 기기로만 여는것이 아니라서 위치값이
+    상대적, 상대적 요소를 잡는 데 포지셔닝이 중요한 역할을 함
+
+    1. position 속성 :  
+      https://showcases.yalco.kr/html-css/02-09/01.html
+      사이트 내부 확인시 커다란 div(class = container) 내에 8개의 회색div 과
+      오렌지 색 div(class = orange) 가 있고 오렌지색 내부에는 더 작은 div(class=red)가 있음
+
+      orange와 red 움직이면서 position 개념 학습
+
+      position 속성의 경우 HTML 요소들이 해당 페이지에서 어떻게 배치될지를 지정
+        - 중요한 점 : 부모 요소의 것이 자식속성에게 상속되지 않음
+        cf- font-size 의 경우 자식에게 상대값 형태(em)로 상속이 되던것과 차이있음
+
+        1)static : top 30px left 30px 입력하더라도 페이지상 변화 없음
+          => static 의 경우 원래 존재하는 페이지의 요소대로 따르기 때문에 
+          위치 속성 지정하더라도 소용 없음.
+        2) relative : 원래있던 위치 기준 top/left/right 등의 속성값이 적용됨/ 공백의 위치는 그대로
+
+        3)absolute  : position 속성에서 static 이 아닌 첫 부모 요소를 기준으로 top, bottom,left, right,
+              z-index 속성값 이용하여 위치 조정 가능
+                첫 부모 -> 가장 바깥쪽 태그 X 
+                       -> position: absolute; 를 표기한 태그의 바로 윗 단계
+
+                position 속성의 default 값은 static 이다.
+
+                특징 :
+                  자리를 차지 하지 않는다.
+                  참조 사이트 기준 다른거 다 지운상태로 position 만 absolute 를 적용할 시
+                  회색 사각형이 하나 사라진 것으로 보이는 이유는 오랜지색 사각형에 겹쳐진 상태이기 때문
+
+        4) fixed  :
+          항상 부모 요소가 아니라 뷰포트를 기준으로 함
+            특징- 스크롤에 영향을 받지 않는다. navaigation bar 와 같은 경우 스크롤 내려도 존재 해야 하기에
+            응용 가능 할 수 있음, 웹 사이트에서 특정 팝업 창 띄운 후 스크롤과 상관없이 한곳에 고정시킬 때 유용함
+
+        5) sticky :
+          어떤 요소가 스크롤로 이동 할 수 있는 공간을 top, bottom, left, right, z-index 속성값을 이용하여 지정
+          특징 :  
+            부모 요소의 여백 등 에도 영향 받음
+              자식 요소의 위치를 고정 해도 부모요소의 위치를 벗어나면 자식요소는 더 이상 움직일 수 없기 때문에
+              sticky 는 부모 요소 안쪽이 아닌 동등하거나 바깥쪽 요소에 지정하는 편이 나음
+
+        6)z-index 속성  :
+          x축 / y축 / y축 에서 z축 관련 부분
+          default 값은 => auto 로 됨 = 0을 의미
+
+          03zindex -- 이후 flex 수업 예정
+
+          https://showcases.yalco.kr/html-css/02-11/01.html
+    
+    Flex layout :
+      모든 웹 사이트는 커다란 레이아웃 형태로 되어있고, 이를 만드는 방식이 다양함
+      예전에는 HTML 과 블록 요소만 이용해 레이아웃 작성했으나 Flex 등장 후 CSS 이용해 레이아웃 작성
+
+      부모에 적용하게 되는 flex / 자식에게 적용하게 되는 Flex
+      참조 사이트 기준 회색 div은 부모요소 / 보라색 div은 자식요소로 3개가 있음
+
+      div 태그 이기 때문에 block 요소로 적용됨 -> default
+      min-width: 48px;
+      min-height: 48px;
+
+      1. display: flex; -> 세로 배치
+      2. display: inline-flex; -> 부모div '인라인 블록'이 됨
+      해당 부모 요소를 블록으로 두는게 flex, 인라인으로 만드는게 inline-flex
+
+      flex-direction 속성 :
+        flex-direction: row;    --> 내부 요소 왼쪽부터 차례로 정렬(메인축이 x축이기때문)
+        flex-direction: row-reverse; 
+        flex-direction: colum;  --> 내부 요소 위에서부터 정렬  
+        flex-direction: colum-reverse;
+
+        reverse 적용시 HTML 상에서의 div 순서는 바뀌지 않지만
+        웹 페이지 상에서 눈으로 보이는 순서가 바뀜
+
+      flex-direction 속성에서 축의 방향을 어떻게 지정하느냐에 따라 달린 속성 :
+        
+        (1) justify-content : 메인축에서 내부 요소 정렬하는 방식 
+            flex-start : 시작점부터 정렬
+            flex-end : 끝부터 정렬
+            center : 중간에 정렬
+            space-between : 내부의 양쪽 요소를 처음과 끝 부분으로 보내, 그 중간값을 가운데 배치
+
+            cf)justify-content: start;
+            cf)justify-content: end; 로 사용해도 문제 없지만 reverse 사용시에는 오류 발생의 가능성이 있어
+            flex-start / flex-end 를 생활화 하는것이 무난함
+
+            space-around : 각 내부 요소의 양쪽에 일정한 크기의 빈 공간 배치
+            space-evenly : 모든 빈 공간을 균일하게 배치함
+            
+            -> flex-direction 을 row 로 배치하여 결과값 보여주었는데 column 기준으로 복습 
+        (2) align-items :
+          flex 의 보조축(row로 수업하기 때문에 메인축이 아닌 것을 의미) 에서 내부요소 정렬
+          -> default로 stretch 지정
+            stretch : 보조 축 방향을 꽉 채워줌 
+            flex-start : 보조축의 상단으로 내부요소를 갖다 붙임 (row 설정시 y축 상단)
+            flex-end : 보조축 하단으로 내부요소 붙임
+
+            마찬가지로 column 기준으로 복습
+            
+            이상에서 확인했듯 flex 레이아웃의 경우 컨테이너 안에 있는 내부 요소를 어느 방향으로 배치하냐에 따라
+            flex-direction / justify-content / align-items 를 다 조합하여 쓰는경우 많음
+        (3) align-content -- 이따 설명
+
+
+        (4)flex-wrap : 자식요소가 부모요소를 넘어가지 않도록 줄 바꿈 - 보통 경우 컨텐츠가 한 줄이 아니고 
+          여러 줄일경우 적용
+
+            flex-wrap: wrap; 으로 적은 상태에서
+              align - items // align.content
+
+              align-items : flex-start / center / flex-end 로 지정시
+              각각 가운데 여백이 같은 크기의 공백으로 나눠진 상태에서 내부 요소가 위쪽 가운데 위쪽 을 기준
+              정렬
+
+              align-content : flex-start / center / flex-end 로 지정시
+              각각 내부 요소 전체가 공백 없이 위, 가운데, 아래로 붙어 정렬
+                            space-between, space-round, space-evenly 속성이 있어 justify-content 속성과 
+                            비교 가능
+
+              gap : 내부 요소들 사이에 들어가는 공백의 크기 지정 -> 단위 em 
+      
+      자식요소에 적용하는 flex 요소
+
+      flex-basis : 메인 축의 길이를 지정 기본값은 auto
+
+      flex-grow : 기본값은 0로 되어있음 공간이 남는 상태라면 빈 공간을 얼마나 가져갈지 지정.
+
+      flex-shrink : 공간이 부족한 상태에서 요소마다 크기를 얼마나 나뉘어 줄까를 지정.
+
+      flex 레이아웃을 지정할때는 flex-basis / grow / shrink 와 같이 속성값을 하나하나 지정 할 수 있는데,
+      flex 내에 여러 개의 값을 작성해서 css 코드 한줄짜리로 만들기도 함
+      순서에 따른 속성값은 다음과 같음
+
+      flex: (flex-grow 값);
+      flex: (flex-grow 값) (flex-basis 값);
+      flex: (flex-grow 값) (flex-shrink 값) (flex-basis 값);
+
+  order : 부모 컨테이너 안에서 여러개의 자식요소들이 있을 때 순서를 임의로 바꿀수 있음
+  HTML 문서의 순서 수정하는것이 아님
+    https://showcases.yalco.kr/html-css/02-11/04.html                  
+
+n04flex
+
+요소를 감추는 방법 :
+  웹 페이지 내에서는 필요에 따라 특정요소를 보이거나 보이지 않게 조정할 필요가 있음
+  a. 요소를 투명하게 바꾸는 것
+  b. 요소가 안보이면서 적용기능을 없애는 것
+
+  1. CSS에서 요소 숨기는 방법
+  https://showcases.yalco.kr/html-css/02-10/02.html
+
+  opacity : 불투명도 조정 0~1 사이의 값.
+    1: 불투명도 100% 이므로 눈에 보임
+    0: 불투명도 0% 이므로 투명하게 됨
+    특징 :
+      해당 요소를 시각적으로 불투명 정도를 조절한 것이기 때ㅣ문에 기능은 남아있음
+
+  visibility: 보이는것 visible / 안보이는것 hidden
+    특징 :  
+      hidden 설정시 기존 가지고있던 기능 또한 모두 해제(시각적으로도 안보임)
+
+  display : inline 혹은 inline-block 으로 지정시 
+    display: none; 이라면 기존 요소가 차지하고 있던 자리까지 사라짐 visibility와의 차이
+    흔적 자체를 날리기에 기존 기능들도 당연히 사용 불가
+
+  마우스 커서 모양 바꾸기
+  n02invisible
